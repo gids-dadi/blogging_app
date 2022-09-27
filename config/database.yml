@@ -20,13 +20,15 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
 
 development:
   adapter: postgresql
   encoding: unicode
-  database: blog_app_rails_development
+  database: my_blog_app_dev
   pool: 5
-  username: sample_postgres
+  port: 5432
+  username: postgres
   password: gidiz111
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -61,9 +63,10 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: blog_app_rails_test
+  database: my_blog_app_test
   pool: 5
-  username: sample_postgres
+  port: 5432
+  username: postgres
   password: gidiz111
 
 # As with config/credentials.yml, you never want to store sensitive information,
@@ -89,7 +92,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: blog_app_rails_production
+  database: my_blog_app_production
   pool: 5
-  username: sample_postgres
+  port: 5432
+  username: postgres
   password: gidiz111
