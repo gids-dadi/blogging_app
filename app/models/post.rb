@@ -5,7 +5,7 @@ class Post < ApplicationRecord
 
   after_save :update_posts_count
 
-def update_posts_count
+  def update_posts_count
     user.increment!(:postsCounter)
   end
 
