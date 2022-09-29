@@ -9,7 +9,7 @@ RSpec.describe Like, type: :model do
     expect(like).to_not be_valid
   end
 
-   it 'is not valid without user_id' do
+  it 'is not valid without user_id' do
     like.user_id = nil
     expect(like).to_not be_valid
   end
