@@ -1,1 +1,13 @@
-<h2>This is the list of posts with a given user id</h2>
+<div class="post-show-c">
+    <div class="user-recent-post">
+        <div class="post-inf-box"
+            <h2 class="user-post-title">Post : <%= @post.title %> by <%= @user.name %></h2>
+            <h3>Comments: <%= @post.commentsCounter%>, Likes: <%= @post.likesCounter %><h3>
+        </div>
+        <p class="user-post-text"><%= @post.text %></p>
+
+        <% @comments.each do |comment|%>
+            <h3><%= comment.user.name %><%= comment.text %></h3>
+        <% end %>
+    </div>
+</div>
