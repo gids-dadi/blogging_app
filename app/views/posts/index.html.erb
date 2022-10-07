@@ -1,1 +1,28 @@
-<h2>Posts index</h2>
+<div class="posts-container">
+
+    <div class="user-box">
+        <img class="user-img" src=<%= @user.photo %> alt="user"/>
+        <div class="user-info-box">
+            <h2 class="user-name"><%= @user.name %></h2>
+            <p class="user-post-count">Number of posts: <%= @user.postsCounter%></p>
+        </div>
+    </div>
+
+    <% @posts.each do |post| %>
+        <div class="user-recent-post">
+            <h2 class="user-post-title">Post : <%= post.id %></h2>
+            <p class="user-post-text"><%= post.text %></p>
+            <h3>Comments: <%= post.commentsCounter%>, Likes: <%= post.likesCounter %><h3>
+
+            <% post.recents_comments.each do |comment|%>
+                <h3><%= comment.user.name %><%= comment.text %></h3>
+            <% end %>
+
+        </div>
+    <% end%>
+
+    <button class="button">
+        Pagination
+    </button>
+
+</div>
