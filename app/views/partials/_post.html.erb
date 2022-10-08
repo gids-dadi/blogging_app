@@ -1,0 +1,6 @@
+<% @all_posts.each do |post| %>
+    <li>
+      <%= render 'posts/post_tile', post: post, user: @user %>
+      <%= render 'posts/comments_tile', comments: post.comments %>
+    </li>
+<% end %>
