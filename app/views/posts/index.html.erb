@@ -8,21 +8,33 @@
         </div>
     </div>
 
-    <% @posts.each do |post| %>
-        <div class="user-recent-post">
-            <h2 class="user-post-title">Post : <%= post.id %></h2>
-            <p class="user-post-text"><%= post.text %></p>
-            <h3>Comments: <%= post.commentsCounter%>, Likes: <%= post.likesCounter %><h3>
 
-            <% post.recents_comments.each do |comment|%>
-                <h3><%= comment.user.name %><%= comment.text %></h3>
+
+     <% @posts.each do |post| %>
+        <div>
+            <%= link_to user_post_path(@user, post), class:"text-dec" do %> 
+
+                <div class="posts-info">
+                    <h2 class="user-post-title">Post : <%= post.title %></h2>
+                    <p class="user-post-text"><%= post.text %></p>
+                    <h3 class="user-post-counters">Comments: <%= post.commentsCounter%>, Likes: <%= post.likesCounter %><h3>
+                </div>
             <% end %>
 
+            <div class="post-comments">
+                <% post.recents_comments.each do |comment|%>
+                    <h3><%= comment.user.name %><%= comment.text %></h3>
+                <% end %>
+            </div>
         </div>
     <% end%>
+
 
     <button class="button">
         Pagination
     </button>
 
+    <%= link_to new_user_post_path(@user) do %>
+        <button>Create a new post</button>
+      <% end %>
 </div>

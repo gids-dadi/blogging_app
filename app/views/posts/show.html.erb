@@ -6,8 +6,18 @@
         </div>
         <p class="user-post-text"><%= @post.text %></p>
 
-        <% @comments.each do |comment|%>
-            <h3><%= comment.user.name %><%= comment.text %></h3>
+        <%= form_with url: "/users/#{@post.user_id}/posts/#{@post.id}/likes", scope: :like do |form| %>
+            <%= form.submit "Like ", class: "post-like-btns"%>
         <% end %>
     </div>
+
+    <div class="post-comments">
+        <% @comments.each do |comment|%>
+            <h3><%= comment.user.name %></h3>
+            <p id="comment"><%= comment.text %></p>
+
+        <% end %>
+    </div>
+
+    <%= render partial: "partials/add_comment", local: { post: @post } %>
 </div>
