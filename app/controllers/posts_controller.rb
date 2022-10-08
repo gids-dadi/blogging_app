@@ -21,7 +21,6 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       format.html do
-
         if post.save
           flash[:success] = 'Post saved successfully'
           redirect_to user_posts_path(@user)
