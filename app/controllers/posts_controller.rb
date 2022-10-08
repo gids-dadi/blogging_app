@@ -10,14 +10,14 @@ class PostsController < ApplicationController
     @comments = @post.comments
   end
 
-  def new 
-@post = Post.new
+  def new
+    @post = Post.new
   end
 
   def create
     @user = current_user
     post = Post.new(params.require(:post).permit(:text, :title))
-    post.user_id = @user.id 
+    post.user_id = @user.id
     respond_to do |format|
       format.html do
         if post.save
@@ -31,10 +31,9 @@ class PostsController < ApplicationController
     end
   end
 
-  private 
+  private
 
   def post_params
     params.require(:post).permit(:title, :text)
   end
-
 end
