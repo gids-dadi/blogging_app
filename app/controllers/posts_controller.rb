@@ -16,10 +16,12 @@ class PostsController < ApplicationController
 
   def create
     @user = current_user
-    post = Post.new(params.require(:post).permit(:text, :title))
+    post = Post.new(params.require(:post).permit(:title, :text))
     post.user_id = @user.id
+
     respond_to do |format|
       format.html do
+
         if post.save
           flash[:success] = 'Post saved successfully'
           redirect_to user_posts_path(@user)

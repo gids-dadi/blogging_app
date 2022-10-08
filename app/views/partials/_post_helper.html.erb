@@ -1,10 +1,10 @@
 <div class="row  px-5 border">
-  <div class="col-12 align-self-start"><h5>Title : <%= post.itle%> </h5></div>
+  <div class="col-12 align-self-start"><h5>Title : <%= post.title%> </h5></div>
   <div class="col-12">
     <% if post.Text.length > 110 %>
-      <%= truncate(post.Text, length: 110) ... %>
+      <%= truncate(post.text, length: 110) ... %>
     <% else %>
-      <%= post.Text %>.
+      <%= post.text %>.
     <% end %>
   </div>
   <div class="col-12 align-self-end">
