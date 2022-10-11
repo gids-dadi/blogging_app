@@ -12,7 +12,7 @@
 
      <% @posts.each do |post| %>
         <div>
-            <%= link_to user_post_path(@user, post), class:"text-dec" do %> 
+            <%= link_to user_post_path(@user, post) do %> 
 
                 <div class="posts-info">
                     <h2 class="user-post-title">Post : <%= post.title %></h2>
