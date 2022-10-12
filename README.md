@@ -32,7 +32,7 @@ To get a local copy up and running follow these simple example steps.
 Tests are present in the spec folder.
 run rspec --format documentation spec/ to check all test cases
 ```
-## Authors
+## Author
 
 👤 **Gideon Dadi**
 
