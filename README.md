@@ -21,6 +21,17 @@ To get a local copy up and running follow these simple example steps.
 **Install Ruby**
 **Install Rails**
 
+
+## Install gems
+
+```
+ bundle install
+```
+## Testing
+```
+Tests are present in the spec folder.
+run rspec --format documentation spec/ to check all test cases
+```
 ## Authors
 
 👤 **Gideon Dadi**
