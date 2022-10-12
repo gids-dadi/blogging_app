@@ -1,23 +1,24 @@
 require 'rails_helper'
 RSpec.describe 'Index page', type: :feature do
   describe 'show page' do
-    
-  before(:each) do
-    @user = User.create(
-      name: 'Gideon',
-      bio: 'Software Developer',
-      photo: 'http://hello.com/org.png',
-      postsCounter: 0
-    )
-  
-@post = Post.create(title: 'first', text: 'first post', user_id: @user.id, commentsCounter: 0, likesCounter: 0)
+    before(:each) do
+      @user = User.create(
+        name: 'Gideon',
+        bio: 'Software Developer',
+        photo: 'http://hello.com/org.png',
+        postsCounter: 0
+      )
 
-@post_one = Post.create(title: 'second', text: 'second post', user_id: @user.id, commentsCounter: 0, likesCounter: 0)
+      @post = Post.create(title: 'first', text: 'first post', user_id: @user.id, commentsCounter: 0, likesCounter: 0)
 
-@post_two = Post.create(title: 'third', text: 'third post', user_id: @user.id, commentsCounter: 0, likesCounter: 0)
-end
+      @post_one = Post.create(title: 'second', text: 'second post', user_id: @user.id, commentsCounter: 0,
+                              likesCounter: 0)
 
-it "has users's profile picture." do
+      @post_two = Post.create(title: 'third', text: 'third post', user_id: @user.id, commentsCounter: 0,
+                              likesCounter: 0)
+    end
+
+    it "has users's profile picture." do
       visit user_path(@user.id)
       expect(page).to have_xpath("//img[contains(@src,'http://hello.com/org.png')]")
     end
@@ -44,7 +45,7 @@ it "has users's profile picture." do
       expect(page).to have_content('third post')
     end
 
-     it 'redirects to user post show page' do
+    it 'redirects to user post show page' do
       visit user_posts_path(@user.id)
       expect(page).to have_current_path user_posts_path(@user.id)
     end
@@ -55,4 +56,4 @@ it "has users's profile picture." do
       expect(page).to have_current_path user_posts_path(@user.id)
     end
   end
-  end
+end
