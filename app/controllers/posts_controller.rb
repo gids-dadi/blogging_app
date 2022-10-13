@@ -19,17 +19,17 @@ class PostsController < ApplicationController
     post.user = current_user
     # post.user_id = @user.id
 
-        if post.save
-          flash[:success] = 'Post saved successfully'
-          redirect_to user_posts_path(@user)
-        else
-          flash.now[:error] = 'Error: Post could not be saved'
-          render :new
-        end   
+    if post.save
+      flash[:success] = 'Post saved successfully'
+      redirect_to user_posts_path(@user)
+    else
+      flash.now[:error] = 'Error: Post could not be saved'
+      render :new
     end
-
+  end
 
   private
+
   def post_params
     params.require(:post).permit(:title, :text)
   end
