@@ -28,6 +28,11 @@ RSpec.describe 'Index page', type: :feature do
       expect(page).to have_content('Gideon')
     end
 
+    it "has users's bio." do
+      visit user_path(@user.id)
+      expect(page).to have_content('Software Developer')
+    end
+
     it 'has users number of posts' do
       visit user_path(@user.id)
       expect(page).to have_content('Number of posts: 3')
