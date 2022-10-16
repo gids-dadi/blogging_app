@@ -22,14 +22,13 @@ class CommentsController < ApplicationController
     end
   end
 
- def destroy
+  def destroy
     post = Post.find(params[:post_id])
     Comment.destroy(params[:id])
     post.commentsCounter -= 1
     post.save
     redirect_to user_posts_path(current_user.id)
   end
-
 
   private
 

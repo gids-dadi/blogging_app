@@ -27,7 +27,7 @@ class PostsController < ApplicationController
     end
   end
 
-def destroy
+  def destroy
     Post.destroy(params[:id])
     current_user.postsCounter -= 1
     current_user.save
