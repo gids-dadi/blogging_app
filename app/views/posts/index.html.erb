@@ -23,12 +23,29 @@
                 </div>
             <% end %>
 
+
+      <% if can? :destroy, post %>
+          <%= form_with url: user_post_path(@user.id, post.id), method: :delete do |f| %>
+            <%= f.submit 'Delete post', class: 'btn-danger btn-sm mx-2' %>
+          <% end %>
+           <% end %>
+
+   <div class="post-comments">
+                <% post.recents_comments.each do |comment|%>
+                    <div class="d-flex">
+                      <p><%=comment.user.name %>: <%=comment.text %></p>
+                        <% if can? :destroy, comment %>
+                     <%= form_with url: user_post_comment_path(post.user.id, post.id, comment.id), :method => :delete do |f| %>
+                     <%= f.submit 'Delete Comment' %>
+                  <% end %>
+           <% end %>
+     </div>
+                <% end %>
+            </div>
+        </div>
+    <% end%>
     <button class="button">
         Pagination
     </button>
-
+  
 </div>
-
-
-        <% end %>
-
