@@ -33,7 +33,7 @@
    <div class="post-comments">
                 <% post.recents_comments.each do |comment|%>
                     <div class="d-flex">
-                      <p><%=comment.user.Name %>: <%=comment.Text %></p>
+                      <p><%=comment.user.name %>: <%=comment.text %></p>
                         <% if can? :destroy, comment %>
                      <%= form_with url: user_post_comment_path(post.user.id, post.id, comment.id), :method => :delete do |f| %>
                      <%= f.submit 'Delete Comment' %>
