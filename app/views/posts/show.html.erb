@@ -6,21 +6,25 @@
             <h2 class="user-post-title">Post : <%= @post.title %> by <%= @user.name %></h2>
             <h3>Comments: <%= @post.commentsCounter%>, Likes: <%= @post.likesCounter %><h3>
         </div>
-
-
         <p class="user-post-text"><%= @post.text %></p>
 
-        <%= form_with url: "/users/#{@post.user_id}/posts/#{@post.id}/likes", scope: :like do |form| %>
-            <%= form.submit "Like ", class: "post-like-btns"%>
-        <% end %>
+        <%= button_to "Like", user_post_likes_path(post_id: @post.id), params: { like: { post_id: @post.id } }, class: "fa-regular fa-heart" %> &nbsp;
+        <%= render 'posts/delete_post' %>
     </div>
 
     <div class="post-comments">
         <% @comments.each do |comment|%>
-            <h3><%= comment.user.name %></h3>
-            <p id="comment"><%= comment.text %></p>
+            <div class="d-flex">
+                <p><%=comment.user.name %>: <%=comment.text %></p>
+                 <% if can? :destroy, comment %>
+               <%= form_with url: user_post_comment_path(@post.user.id, @post.id, comment.id), :method => :delete do |f| %>
+                <%= f.submit 'Delete Comment' %>
+               <% end %>
+            <% end %>
+     </div>
+
         <% end %>
     </div>
-
+    
     <%= render partial: "partials/add_comment", local: { post: @post } %>
 </div>

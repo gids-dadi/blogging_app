@@ -4,6 +4,35 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    if user.role == 'admin'
+      can :manage,  :all
+    else
+      can :destroy, Post do |post|
+        post.user == user
+      end
+
+      can :destroy, Comment do |comment|
+        comment.user == user
+      end
+
+      can :create, Post
+      can :create, Comment
+    end
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     # Define abilities for the user here. For example:
     #
     #   return unless user.present?
@@ -29,4 +58,3 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/blob/develop/docs/define_check_abilities.md
   end
-end
